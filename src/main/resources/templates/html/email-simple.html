@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: 'Poppins-Regular', sans-serif; padding: 0; margin: 0; color: #232323;">
+<div class="content" th:style="'background-image: url(http://591742baada7.ngrok.io/img/bg-email.png); background-repeat: no-repeat; background-attachment: scroll; background-position: center center; background-size: cover; height: 760px;'">
+    <div class="body-content" style="position: relative; display: grid; justify-content: center;">
+        <img style="margin-top: 40px; margin-left: auto; margin-right: auto;" src="../../../webapp/images/icon-email.png" th:src="|cid:${imageResourceName}|" alt="img">
+        <div class="content-title" style="width: 400px; margin: auto; width: 50%; padding: 10px;">
+            <h3 style="font-size: 40px; line-height: 0;">Welcome</h3>
+            <hr>
+            <p style="font-size: 16px; font-weight: bold; height: 5px;">Hii <span>Adi Suhaddi,</span></p>
+            <p style="font-size: 16px; font-weight: bold; height: 5px;">Here's your master trader score information:</p>
+
+            <div class="title-main" style="margin-top: 50px;">
+                <table style="border-spacing: 15px;">
+                    <tr>
+                        <td class="text-table" style="font-size: 18px; color: #5D5D5D; font-weight: 500; height: auto;">Mt4 Account Name</td>
+                        <td colspan="4"></td>
+                        <td class="text-row" style="font-size: 18px; color: #232323;font-weight: bold; margin-left: 96px;">ptm-mab-an</td>
+                    </tr>
+                    <tr>
+                        <td class="text-table" style="font-size: 18px; color: #5D5D5D;font-weight: 500; height: auto;">Mt4 Account Number</td>
+                        <td colspan="4"></td>
+                        <td class="text-row" style="font-size: 18px; color: #232323;font-weight: bold; margin-left: 96px;">2100198747</td>
+                    </tr>
+                    <tr>
+                        <td class="text-table" style="font-size: 18px; color: #5D5D5D;font-weight: 500; height: auto;">Score</td>
+                        <td colspan="4"></td>
+                        <td class="text-row" style="font-size: 18px; color: #232323;font-weight: bold; margin-left: 96px;">53.7080</td>
+                    </tr>
+                    <tr>
+                        <td class="text-table" style="font-size: 18px; color: #5D5D5D;font-weight: 500; height: auto;">Account Risk Profile</td>
+                        <td colspan="4"></td>
+                        <td class="text-row" style="font-size: 18px; color: #232323;font-weight: bold; margin-left: 96px;">konservatif</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="title-btn" style="margin-top: 15px;">
+                <button class="btn-login" style="width: 130px; height: 40px;background-color: #FFB031; border-radius: 8px; color: #fff; border: 0;">Login Now</button>
+                <hr>
+            </div>
+            <div class="title-footer">
+                <p style="font-size: 16px; color: #5D5D5D; font-weight: 500;">Thanks,</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

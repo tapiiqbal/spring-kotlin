@@ -2,12 +2,14 @@ package com.improject.springkotlindemo.service
 
 import com.improject.springkotlindemo.domain.Mail
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Qualifier
+import org.springframework.core.io.ByteArrayResource
+import org.springframework.core.io.InputStreamSource
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.stereotype.Service
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
+import java.nio.file.Paths
 import java.util.*
 import javax.mail.MessagingException
 
@@ -16,6 +18,9 @@ import javax.mail.MessagingException
 class MailService @Autowired constructor(private val mailSender: JavaMailSender) {
     @Autowired
     lateinit var textTemplateEngine: TemplateEngine
+
+    @Autowired
+    lateinit var htmlTemplateEngine: TemplateEngine
 
 
     fun sendMail(mail: Mail): String {
@@ -87,6 +92,40 @@ class MailService @Autowired constructor(private val mailSender: JavaMailSender)
         // Send email
         mailSender.send(mimeMessage)
         return "Sukses"
+    }
+
+        /*
+     * Send HTML mail (simple)
+     */
+    @Throws(MessagingException::class)
+    fun sendHtmlMail(mail: Mail, bytes: ByteArray,locale: Locale): String {
+
+        // Prepare the evaluation context
+        val ctx = Context(locale)
+        ctx.setVariable("name", mail.recipientName)
+        ctx.setVariable("name", mail.recipientName)
+        ctx.setVariable("subscriptionDate", Date())
+        ctx.setVariable("hobbies", Arrays.asList("Cinema", "Sports", "Music"))
+
+        // Prepare message using a Spring helper
+        val mimeMessage = mailSender!!.createMimeMessage()
+        val message = MimeMessageHelper(mimeMessage,true, "UTF-8")
+        message.setSubject("Example HTML email (simple)")
+        message.setFrom("thymeleaf@example.com")
+        message.setTo(mail.recipientEmail!!)
+            ctx.setVariable("imageResourceName", "image"); // so that we can reference it from HTML
+
+        // Create the HTML body using Thymeleaf
+        val htmlContent = htmlTemplateEngine!!.process(EMAIL_SIMPLE_TEMPLATE_NAME, ctx)
+        message.setText(htmlContent, true /* isHtml */)
+
+        //Add the inline image, referenced from the HTML code as "cid:${imageResourceName}"
+        val imageSource: InputStreamSource = ByteArrayResource(bytes!!)
+        message.addInline("image", imageSource, "image/png")
+
+        // Send email
+        mailSender.send(mimeMessage)
+            return "Sukses"
     }
 
     companion object {

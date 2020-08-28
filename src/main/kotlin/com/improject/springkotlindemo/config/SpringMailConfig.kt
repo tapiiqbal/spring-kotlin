@@ -98,7 +98,7 @@ class SpringMailConfig : ApplicationContextAware, EnvironmentAware {
 
     private fun textTemplateResolver(): ITemplateResolver {
         val templateResolver = ClassLoaderTemplateResolver()
-        templateResolver.setPrefix("/mail/")
+        templateResolver.setPrefix("/templates/")
         templateResolver.setSuffix(".txt")
         templateResolver.setTemplateMode(TemplateMode.TEXT)
         templateResolver.setCharacterEncoding(EMAIL_TEMPLATE_ENCODING)
@@ -113,7 +113,7 @@ class SpringMailConfig : ApplicationContextAware, EnvironmentAware {
         val templateResolver = ClassLoaderTemplateResolver()
         templateResolver.setOrder(Integer.valueOf(2))
         templateResolver.setResolvablePatterns(setOf("html/*"))
-        templateResolver.setPrefix("/mail/")
+        templateResolver.setPrefix("/templates/")
         templateResolver.setSuffix(".html")
         templateResolver.setTemplateMode(TemplateMode.HTML)
         templateResolver.setCharacterEncoding(EMAIL_TEMPLATE_ENCODING)
@@ -125,7 +125,7 @@ class SpringMailConfig : ApplicationContextAware, EnvironmentAware {
         val templateResolver = StringTemplateResolver()
         templateResolver.setOrder(Integer.valueOf(3))
         // No resolvable pattern, will simply process as a String template everything not previously matched
-        templateResolver.setTemplateMode("HTML5")
+        templateResolver.setTemplateMode("HTML")
         templateResolver.setCacheable(false)
         return templateResolver
     }

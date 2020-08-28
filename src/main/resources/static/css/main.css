@@ -1,0 +1,78 @@
+@font-face
+{
+    font-family: 'Poppins-Regular', sans-serif;
+    src: url('../fonts/Poppins-Regular.ttf');
+}
+
+body{
+    font-family: 'Poppins-Regular', sans-serif;
+    padding: 0;
+    margin: 0;
+    color: #232323;
+}
+.content {
+    background-image: url('../img/bg-email.png');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+    height: 720px;
+}
+.content .body-content {
+    justify-content: center;
+    position: relative;
+    display: grid;
+}
+.content .body-content img {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 250px; */
+}
+.content-title {
+    width: 400px;
+}
+.content-title h3 {
+    font-size: 40px;
+    line-height: 0;
+}
+.content-title p {
+    font-size: 16px;
+    font-weight: bold;
+    height: 5px;
+}
+.content-title .title-main{
+    margin-top: 50px;
+}
+.content-title .title-main .text-table{
+    font-size: 18px;
+    color: #5D5D5D;
+    font-weight: 500;
+    height: auto;
+}
+.content-title .title-main .text-row{
+    font-size: 18px;
+    color: #232323;
+    font-weight: bold;
+    margin-left: 96px;
+}
+
+.content-title .title-main table{
+    border-spacing: 15px;
+}
+.content-title .title-btn {
+    margin-top: 15px;
+}
+.content-title .title-btn .btn-login {
+    width: 130px;
+    height: 40px;
+    background-color: #FFB031;
+    border-radius: 8px;
+    color: #fff;
+    border: 0;
+}
+.content-title .title-footer p{
+    font-size: 16px;
+    color: #5D5D5D;
+    font-weight: 500;
+}
